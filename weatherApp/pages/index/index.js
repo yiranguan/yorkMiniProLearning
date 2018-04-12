@@ -20,10 +20,9 @@ Page({
   data:{
     nowTemp:14,
     nowWeather:'多云',
-    nowWeatherPicURL:''
+    nowWeatherBackground:''
   },
   onLoad(){
-    console.log('Hello World!');
     wx.request({
       url: 'https://test-miniprogram.com/api/weather/now',
       data:{city:'广州市'},
@@ -35,21 +34,11 @@ Page({
         this.setData({
           nowTemp: temp + '°',
           nowWeather: weatherMap[weather],
-          nowWeatherPicURL: '/images/' + weather + '-bg.png'
+          nowWeatherBackground: '/images/' + weather + '-bg.png'
         });
         wx.setNavigationBarColor({
           frontColor: '#000000',
-          backgroundColor: weatherColorMap[weather],
-          animation: {},
-          success: function(res) {
-            console.log('Cool');
-          },
-          fail: function(res) {
-            console.log('Ugly');
-          },
-          complete: function(res) {
-            console.log('You rock!');
-          },
+          backgroundColor: weatherColorMap[weather]
         })
       },
     })
