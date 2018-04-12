@@ -1,5 +1,5 @@
 <view class="weather-wrapper">
-  <view class="temp">12°</view>
-  <view class="weather">晴天</view>
+  <view class="temp">{{temp}}°</view>
+  <view class="weather">{{weather}}</view>
   <image src='/images/sunny-bg.png' alt="pic" class='weather-bg' ></image>   
 </view>

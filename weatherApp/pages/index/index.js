@@ -1,4 +1,8 @@
 Page({
+  data:{
+    temp:0,
+    weather:'阴天',
+  },
   onLoad(){
     console.log('Hello World!');
     wx.request({
@@ -12,7 +16,9 @@ Page({
         let result = res.data.result;
         let temp = result.now.temp;
         let weather = result.now.weather;
-        console.log(temp, weather);
+        // data.temp = temp;
+        // data.weather = weather;
+        // 以上两行有问题，需要想办法将temp和weather传送到data的相应位置
       },
     })
   }
