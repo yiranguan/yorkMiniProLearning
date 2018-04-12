@@ -5,9 +5,14 @@ Page({
       url: 'https://test-miniprogram.com/api/weather/now',
       data:{city:'广州市'},
       success:res => {
-        console.log('temp：' + res.data.result.now.temp);
-        console.log('weather: ' + res.data.result.now.weather);
-        console.log('data-now: ' + res.data.result.now);
+        // console.log('temp：' + res.data.result.now.temp);
+        // console.log('weather: ' + res.data.result.now.weather);
+        // console.log('data-now: ' + res.data.result.now);
+        // 以上注释掉自己联系的部分，以下学习老师的方法做一次
+        let result = res.data.result;
+        let temp = result.now.temp;
+        let weather = result.now.weather;
+        console.log(temp, weather);
       },
     })
   }
