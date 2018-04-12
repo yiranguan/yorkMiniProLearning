@@ -42,5 +42,14 @@ Page({
         })
       },
     })
+  },
+  onPullDownRefresh:function(){
+    // wx.startPullDownRefresh({
+    //   success: errMsg => {
+    //     console.log(errMsg);
+    //   },
+    // })
+    // 以上代码运行直接崩溃。。。。
+    wx.stopPullDownRefresh();
   }
 });
