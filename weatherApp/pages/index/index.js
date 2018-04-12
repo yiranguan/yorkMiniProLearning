@@ -23,10 +23,20 @@ Page({
     nowWeatherBackground:''
   },
   onLoad(){
+    this.getNow(() => {
+      wx.stopPullDownRefresh();
+    });
+  },
+
+  onPullDownRefresh(){
+    this.getNow();
+  },
+
+  getNow(callback){
     wx.request({
       url: 'https://test-miniprogram.com/api/weather/now',
-      data:{city:'广州市'},
-      success:res => {
+      data: { city: '广州市' },
+      success: res => {
         let result = res.data.result;
         let temp = result.now.temp;
         let weather = result.now.weather;
@@ -41,15 +51,9 @@ Page({
           backgroundColor: weatherColorMap[weather]
         })
       },
-    })
-  },
-  onPullDownRefresh:function(){
-    // wx.startPullDownRefresh({
-    //   success: errMsg => {
-    //     console.log(errMsg);
-    //   },
-    // })
-    // 以上代码运行直接崩溃。。。。
-    wx.stopPullDownRefresh();
+      complete: () => {
+        callback && callback();
+      }
+    });
   }
 });
