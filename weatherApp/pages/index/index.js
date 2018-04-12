@@ -27,6 +27,10 @@ Page({
         // 以上两行有问题，需要想办法将temp和weather传送到data的相应位置
         以上自己尝试 
         */
+        this.setData({
+          nowTemp: temp,
+          nowWeather: weather
+        });
       },
     })
   }
