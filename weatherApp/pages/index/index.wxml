@@ -1,8 +1,5 @@
 <view class="weather-wrapper">
-  <view class="temp">{{nowTemp}}°</view>
+  <view class="temp">{{nowTemp}}</view>
   <view class="weather">{{nowWeather}}</view>
-  <!-- <view class="temp">{{temp}}°</view> -->
-  <!-- <view class="weather">{{weather}}</view> -->
-  <!-- 自行尝试版本 -->
   <image src='/images/sunny-bg.png' alt="pic" class='weather-bg' ></image>   
 </view>
