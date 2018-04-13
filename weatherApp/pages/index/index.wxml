@@ -3,3 +3,10 @@
   <view class="weather">{{nowWeather}}</view>
   <image src='{{nowWeatherBackground}}' alt="pic" class='weather-bg' ></image>   
 </view>
+<view class='timetips'>
+  <image src='/images/time-icon.png' class='timetips-icon'></image>
+  <view class='timetips-text'>未来24小时天气预报</view>
+</view>
+<view class='tryflex'>
+  <view wx:for="{{arr}}" class='tryflex-item'>{{item.a}}</view>
+</view>

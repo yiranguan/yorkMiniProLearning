@@ -1,28 +1,61 @@
-.temp{
+.temp {
   text-align: center;
   font-size: 200rpx;
   line-height: 280rpx;
   opacity: 0.8
 }
 
-.weather{
+.weather {
   text-align: center;
   font-size: 40rpx;
   line-height: 58rpx;
   opacity:0.65;
 }
 
-.weather-wrapper{
+.weather-wrapper {
   position: relative;
   padding-top: 174rpx;
   padding-bottom: 250rpx;
 }
 
-.weather-bg{
+.weather-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
+}
+
+.timetips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40rpx
+}
+
+.timetips-icon {
+  width: 36rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+
+.timetips-text {
+  font-size: 30rpx;
+  line-height: 42rpx;
+  opacity: 0.5;
+}
+
+.tryflex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80rpx;
+}
+
+.tryflex-item {
+  font-size: 80rpx;
+  line-height: 112rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
 }

@@ -20,7 +20,10 @@ Page({
   data:{
     nowTemp:14,
     nowWeather:'多云',
-    nowWeatherBackground:''
+    nowWeatherBackground:'',
+    arr:[
+      { a: 1 }, { a: 2 }, { a: 3 }, { a: 4 }, { a: 5 }
+    ]
   },
   onLoad(){
     this.getNow();
