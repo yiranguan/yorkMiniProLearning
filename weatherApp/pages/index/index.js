@@ -21,9 +21,10 @@ Page({
     nowTemp:14,
     nowWeather:'多云',
     nowWeatherBackground:'',
-    arr:[
+    tryArray:[
       { a: 1 }, { a: 2 }, { a: 3 }, { a: 4 }, { a: 5 }
-    ]
+    ],
+    foreCastWeather:[]
   },
   onLoad(){
     this.getNow();
@@ -42,12 +43,67 @@ Page({
         let result = res.data.result;
         let temp = result.now.temp;
         let weather = result.now.weather;
+        let forecast = result.forecast;
+
+        let date = new Date();
+        let hours = date.getHours();
+
+        let forecastWeather = [];
+
+        function id2time(id, hours) {
+          if (id * 3 + hours < 24) {
+            return (id * 3 + hours) + '时';
+          } else {
+            return (id * 3 + hours - 24) + '时';
+          }
+        }
+
+        function makeForecast(time, weather, temp){
+          this.time = time;
+          this.weather = weather;
+          this.temp = temp;
+        }
+
+        forecast.forEach(val => {
+          let nowWeather = new makeForecast(id2time(val.id, hours), weatherMap[val.weather], val.temp + '°');
+          forecastWeather.push(nowWeather);
+        });
+        // function nowWeather(time, weather, temp) {
+        //   this.time = time;
+        //   this.weather = weather;
+        //   this.temp = temp;
+        // }
+
+        // for (let i=0; i<forecast.length; i++) {
+        //   if(i=0){
+        //     let displayWeather = new nowWeather('现在', weatherMap[forecast[i].weather], forecast[i].temp + '°');
+        //     forecastWeather.push(displayWeather);
+        //   } else {
+        //     let nowHours = 0;
+        //     let nowTime = hours + (forecast[i].id * 3);
+        //     if (nowTime<24){
+        //       nowHours = nowTime;
+        //     }else{
+        //       nowHours = nowTime - 24;
+        //     }
+        //     let displayWeather = new nowWeather(nowHours, weatherMap[forecast[i].weather], forecast[i].temp + '°');
+        //     forecastWeather.push(displayWeather);
+        //   }
+        // }
+
         console.log(temp, weather);
+        console.log(forecast);
+
+        console.log(forecastWeather);
+        console.log(typeof (forecastWeather[0]));
+        console.log(forecastWeather[0].weather);
+
         this.setData(
           {
           nowTemp: temp + '°',
           nowWeather: weatherMap[weather],
-          nowWeatherBackground: '/images/' + weather + '-bg.png'
+          nowWeatherBackground: '/images/' + weather + '-bg.png',
+          forecastWeather:forecastWeather
           },
           () => {console.log("I'm the setData() func, And now Data has been reset yet.");}
         );

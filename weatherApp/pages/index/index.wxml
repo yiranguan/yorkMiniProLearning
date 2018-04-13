@@ -8,5 +8,5 @@
   <view class='timetips-text'>未来24小时天气预报</view>
 </view>
 <view class='tryflex'>
-  <view wx:for="{{arr}}" class='tryflex-item'>{{item.a}}</view>
-</view>
+  <view wx:for="{{tryArray}}" wx:key="teyArray" class='tryflex-item'>{{item.a}}</view>
+</view> 
