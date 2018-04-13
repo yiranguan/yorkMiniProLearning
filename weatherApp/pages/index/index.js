@@ -51,10 +51,12 @@ Page({
         let forecastWeather = [];
 
         function id2time(id, hours) {
-          if (id * 3 + hours < 24) {
+          if (id * 3 + hours < 24 && id !=0) {
             return (id * 3 + hours) + '时';
-          } else {
+          } else if (id * 3 + hours >= 24 && id != 0){
             return (id * 3 + hours - 24) + '时';
+          } else {
+            return '现在'
           }
         }
 
