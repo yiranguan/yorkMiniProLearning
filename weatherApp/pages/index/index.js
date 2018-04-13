@@ -23,12 +23,13 @@ Page({
     nowWeatherBackground:''
   },
   onLoad(){
-    this.getNow(() => {
-      wx.stopPullDownRefresh();
-    });
+    this.getNow();
   },
   onPullDownRefresh(){
-    this.getNow();
+    this.getNow(() => {
+      wx.stopPullDownRefresh();
+      console.log("I'm the callback func, And I was running");
+    });
   },
   getNow(callback){
     wx.request({
@@ -45,7 +46,7 @@ Page({
           nowWeather: weatherMap[weather],
           nowWeatherBackground: '/images/' + weather + '-bg.png'
           },
-          () => {console.log('sucesse');}
+          () => {console.log("I'm the setData() func, And now Data has been reset yet.");}
         );
         wx.setNavigationBarColor({
           frontColor: '#000000',
