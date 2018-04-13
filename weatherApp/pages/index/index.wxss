@@ -47,37 +47,36 @@
 }
 
 .forecast-weather-scoll{
-  height: 317rpx;
+  height: 353rpx;
 }
 
 .forecast-weather {
   display: flex;
-  /* justify-content: center;  */
-  /* align-items: center; */
-  flex-shrink: 0;
   margin-top: 45rpx;
 }
 
 .forecast-weather-item {
+  display: flex;
   width:120rpx;
+  flex-shrink: 0;
+  flex-direction:column;
+  align-items: center;
 }
 
 .forecast-weather-item-time {
-  text-align: center;
-  font-size: 40rpx;
-  line-height: 56rpx;
+  font-size: 30rpx;
+  line-height: 42rpx;
   opacity: 0.8
 }
 
 .forecast-weather-item-icon {
-  padding-top:20rpx;
-  padding-bottom:20rpx;  
-  width:120rpx;
-  height: 120rpx;
+  padding-top:50rpx;
+  padding-bottom:50rpx;  
+  width:60rpx;
+  height: 60rpx;
 }
 
 .forecast-weather-item-temp {
-  text-align: center;
   font-size: 40rpx;
   line-height: 56rpx;
   opacity: 0.8
