@@ -58,14 +58,15 @@ Page({
           }
         }
 
-        function makeForecast(time, weather, temp){
+        function makeForecast(time, weather, temp, id){
           this.time = time;
           this.weatherIconSrc = '/images/' + weather + '-icon.png';
           this.temp = temp;
+          this.id = id;
         }
 
         forecast.forEach(val => {
-          let nowWeather = new makeForecast(id2time(val.id, hours), val.weather, val.temp + '°');
+          let nowWeather = new makeForecast(id2time(val.id, hours), val.weather, val.temp + '°', 'id' + val.id);
           forecastWeather.push(nowWeather);
         });
         /* 失败部分代码等待高人解读失败原因

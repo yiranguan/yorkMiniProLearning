@@ -46,6 +46,10 @@
   opacity: 0.5;
 }
 
+.forecast-weather-scoll{
+  height: 317rpx;
+}
+
 .forecast-weather {
   display: flex;
   justify-content: center;
@@ -61,6 +65,7 @@
   text-align: center;
   font-size: 40rpx;
   line-height: 56rpx;
+  opacity: 0.8
 }
 
 .forecast-weather-item-icon {
@@ -74,4 +79,5 @@
   text-align: center;
   font-size: 40rpx;
   line-height: 56rpx;
+  opacity: 0.8
 }
