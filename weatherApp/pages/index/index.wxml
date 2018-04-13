@@ -7,6 +7,10 @@
   <image src='/images/time-icon.png' class='timetips-icon'></image>
   <view class='timetips-text'>未来24小时天气预报</view>
 </view>
-<view class='tryflex'>
-  <view wx:for="{{tryArray}}" wx:key="teyArray" class='tryflex-item'>{{item.a}}</view>
+<view class='forecast-weather'>
+  <view wx:for="{{forecastWeather}}" wx:key="forecastWeather" class='forecast-weather-item'>
+    <view class='forecast-weather-item-time'>{{item.time}}</view>
+    <image src="{{item.weatherIconSrc}}" mode='scaleToFill' class='forecast-weather-item-icon'></image>
+    <view class='forecast-weather-item-temp'>{{item.temp}}</view>
+  </view>
 </view> 

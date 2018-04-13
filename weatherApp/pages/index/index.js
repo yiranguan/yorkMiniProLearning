@@ -24,7 +24,7 @@ Page({
     tryArray:[
       { a: 1 }, { a: 2 }, { a: 3 }, { a: 4 }, { a: 5 }
     ],
-    foreCastWeather:[]
+    forecastWeather:[]
   },
   onLoad(){
     this.getNow();
@@ -60,14 +60,15 @@ Page({
 
         function makeForecast(time, weather, temp){
           this.time = time;
-          this.weather = weather;
+          this.weatherIconSrc = '/images/' + weather + '-icon.png';
           this.temp = temp;
         }
 
         forecast.forEach(val => {
-          let nowWeather = new makeForecast(id2time(val.id, hours), weatherMap[val.weather], val.temp + '°');
+          let nowWeather = new makeForecast(id2time(val.id, hours), val.weather, val.temp + '°');
           forecastWeather.push(nowWeather);
         });
+        /* 失败部分代码等待高人解读失败原因
         // function nowWeather(time, weather, temp) {
         //   this.time = time;
         //   this.weather = weather;
@@ -90,7 +91,7 @@ Page({
         //     forecastWeather.push(displayWeather);
         //   }
         // }
-
+        */
         console.log(temp, weather);
         console.log(forecast);
 

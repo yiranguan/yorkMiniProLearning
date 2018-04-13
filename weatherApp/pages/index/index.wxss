@@ -46,16 +46,32 @@
   opacity: 0.5;
 }
 
-.tryflex {
+.forecast-weather {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 80rpx;
+  margin-top: 40rpx;
 }
 
-.tryflex-item {
-  font-size: 80rpx;
-  line-height: 112rpx;
-  padding-left: 20rpx;
-  padding-right: 20rpx;
+.forecast-weather-item {
+  width:125rpx;
+}
+
+.forecast-weather-item-time {
+  text-align: center;
+  font-size: 40rpx;
+  line-height: 56rpx;
+}
+
+.forecast-weather-item-icon {
+  padding-top:20rpx;
+  padding-bottom:20rpx;  
+  width:125rpx;
+  height: 125rpx;
+}
+
+.forecast-weather-item-temp {
+  text-align: center;
+  font-size: 40rpx;
+  line-height: 56rpx;
 }
