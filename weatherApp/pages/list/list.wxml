@@ -1,2 +1,11 @@
-<!--pages/list/list.wxml-->
-<text>Hello list!</text>
+<view wx:for="{{dateItem}}" wx:key="dateItem" class='date-item'>
+  <view class='date-wrapper'>
+    <view class='date-time'>
+      <view class='day'>{{item.day}}</view>
+      <view class='date'>{{item.date}}</view>
+    </view>
+    <view class='temp'>{{item.temp}}</view>
+  <image src='{{item.weather}}' class='weather'></image>
+  </view>
+  
+</view>
