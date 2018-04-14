@@ -114,8 +114,8 @@ Page({
   },
 
   onTapDayWeather(){
-    wx.showToast({
-      title: '点击了一下',
+    wx.navigateTo({
+      url: '/pages/list/list',
     })
   }
 });
