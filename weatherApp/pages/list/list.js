@@ -10,22 +10,20 @@ const dayMap = {
 
 Page({
   data:{
-    dateItem:[
-
-      // {
-      //   day:'星期一',
-      //   date:'2018/1/2',
-      //   temp:'0-20',
-      //   weather:'/images/sunny-icon.png'
-      // },
-    ],
+    dateItem:[],
   },
 
   onLoad(){
     this.getFuture()
   },
 
-  getFuture(){
+  onPullDownRefresh(){
+    this.getFuture(()=>{
+      wx.stopPullDownRefresh()
+    })
+  },
+
+  getFuture(callback){
     wx.request({
       url: 'https://test-miniprogram.com/api/weather/future',
       data: {
@@ -34,21 +32,28 @@ Page({
       },
       success: res => {
         let result = res.data.result;
-        let dateItem = [];
-        result.forEach ((val, i, arr) => {
-          let date = new Date();
-          date.setDate(date.getDate() + i);
-          dateItem.push({
-            day:dayMap[date.getDay()],
-            date: date.toLocaleDateString(),
-            temp: val.minTemp + '°C to ' + val.maxTemp + '°C',
-            weather: '/images/' + val.weather + '-icon.png'
-          })
-        });
-        this.setData({
-          dateItem:dateItem
-        })
+        this.setWeekWeather(result);
+      },
+      complete: () => {
+        callback && callback()
       }
+    })
+  },
+
+  setWeekWeather(result){
+    let dateItem = [];
+    result.forEach((val, i, arr) => {
+      let date = new Date();
+      date.setDate(date.getDate() + i);
+      dateItem.push({
+        day: dayMap[date.getDay()],
+        date: date.toLocaleDateString(),
+        temp: val.minTemp + '°C to ' + val.maxTemp + '°C',
+        weather: '/images/' + val.weather + '-icon.png'
+      })
+    });
+    this.setData({
+      dateItem: dateItem
     })
   },
 
