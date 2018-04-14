@@ -43,3 +43,7 @@
   width: 90rpx;
   height: 90rpx;
 }
+
+.date-item:last-child {
+  border-bottom: none;
+}
