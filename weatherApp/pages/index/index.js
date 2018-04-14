@@ -111,5 +111,11 @@ Page({
       todayDate:day,
       todayTemp:temp
     });
+  },
+
+  onTapDayWeather(){
+    wx.showToast({
+      title: '点击了一下',
+    })
   }
 });
