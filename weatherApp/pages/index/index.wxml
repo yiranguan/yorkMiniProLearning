@@ -1,7 +1,12 @@
 <view class="weather-wrapper">
   <view class="temp">{{nowTemp}}</view>
   <view class="weather">{{nowWeather}}</view>
-  <image src='{{nowWeatherBackground}}' alt="pic" class='weather-bg' ></image>   
+  <image src='{{nowWeatherBackground}}' alt="pic" class='weather-bg' ></image>
+  <view class='today' bindtap='onTapDayWeather'>
+    <view class='today-date'>{{todayDate}}</view>
+    <view class='today-temp'>{{todayTemp}}</view>
+    <image src='/images/arrow.png' class='arrow'></image>
+  </view>
 </view>
 <view class='timetips'>
   <image src='/images/time-icon.png' class='timetips-icon'></image>

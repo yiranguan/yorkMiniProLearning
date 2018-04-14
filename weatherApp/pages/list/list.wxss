@@ -1,0 +1,49 @@
+.date-item {
+  position: relative;
+  width: 670rpx;
+  height: 150rpx;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1) ;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+
+.date-wrapper {
+  position: absolute;
+  top: 20rpx;
+  bottom: 20rpx;
+  left: 0;
+  right: 0;
+  align-items: center;
+  opacity: 0.5;
+  display: flex;
+}
+
+.date-time {
+  text-align: center;
+}
+
+.day {
+  font-size: 40rpx;
+  line-height: 56rpx;
+}
+
+.date {
+  font-size: 30rpx;
+  line-height: 42rpx;
+}
+
+.temp {
+  flex-grow: 1;
+  font-size: 50rpx;
+  line-height: 70rpx;
+  text-align: center;
+}
+
+.weather {
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.date-item:last-child {
+  border-bottom: none;
+}

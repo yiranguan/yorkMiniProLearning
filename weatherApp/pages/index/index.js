@@ -22,7 +22,9 @@ Page({
     nowTemp:14,
     nowWeather:'多云',
     nowWeatherBackground:'',
-    forecastWeather:[]
+    forecastWeather:[],
+    todayDate:'',
+    todayTemp:''
   },
 
   onLoad(){
@@ -43,6 +45,7 @@ Page({
         let result = res.data.result;
         this.setNow(result);
         this.setForecastWeather(result);
+        this.setToday(result);
       },
       complete: () => {
         callback && callback();
@@ -93,9 +96,26 @@ Page({
       let nowWeather = new makeForecast(id2time(val.id, hours), val.weather, val.temp + '°', 'id' + val.id);
       forecastWeather.push(nowWeather);
     });
-    this.setData(
-      {
-        forecastWeather: forecastWeather
-      });
+    this.setData({
+      forecastWeather: forecastWeather
+    });
+  },
+
+  setToday(result){
+    let date = new Date();
+    let day = date.toLocaleDateString();
+    let today = result.today;
+    let temp = '今日气温：' + today.minTemp + '°C to ' + today.maxTemp + '°C'; 
+    
+    this.setData({
+      todayDate:day,
+      todayTemp:temp
+    });
+  },
+
+  onTapDayWeather(){
+    wx.navigateTo({
+      url: '/pages/list/list',
+    })
   }
 });

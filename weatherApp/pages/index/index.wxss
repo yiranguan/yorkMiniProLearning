@@ -27,6 +27,35 @@
   z-index: -1;
 }
 
+.today {
+  border-top:2px solid rgba(0, 0, 0, 0.1); 
+  position: absolute;
+  bottom: 0;
+  left: 40rpx;
+  right: 40rpx;
+  display: flex;
+  height: 90rpx;
+  align-items: center;
+  font-size: 30rpx;
+  line-height: 42rpx;
+}
+
+.today-date {
+  opacity: 0.5;
+}
+
+.today-temp {
+  opacity: 0.5;
+  flex-grow: 1;
+  padding-right:20rpx; 
+  text-align: right;
+}
+
+.arrow {
+  width: 13rpx;
+  height: 24rpx;
+}
+
 .timetips {
   display: flex;
   justify-content: center;
