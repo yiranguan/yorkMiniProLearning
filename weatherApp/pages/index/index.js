@@ -63,7 +63,7 @@ Page({
       backgroundColor: weatherColorMap[weather]
     })
   },
-  
+
   setForecastWeather(result){
     let forecast = result.forecast;
 
