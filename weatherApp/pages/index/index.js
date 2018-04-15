@@ -1,3 +1,9 @@
+const QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
+
+const mapSDK = new QQMapWX({
+  key: 'ZVOBZ-SAXWJ-NVZFA-K2F4X-DXOE3-PGF3H'
+});
+
 const weatherMap = {
   'sunny': '晴天',
   'cloudy': '多云',
@@ -24,7 +30,8 @@ Page({
     nowWeatherBackground:'',
     forecastWeather:[],
     todayDate:'',
-    todayTemp:''
+    todayTemp:'',
+    city:'广州市'
   },
 
   onLoad(){
@@ -37,10 +44,53 @@ Page({
     });
   },
 
+  onTapDayWeather() {
+    wx.navigateTo({
+      url: '/pages/list/list',
+    })
+  },
+
+  onTapLocation() {
+    wx.getLocation({
+      type: '',
+      altitude: true,
+      success: res => {
+        console.log(res);
+        this.getCity(res.latitude, res.longitude);
+      }
+    })
+  },
+
+  getCity(lat, lon) {
+    mapSDK.reverseGeocoder({
+      location: {
+        latitude: lat,
+        longitude: lon
+      },
+      success: res => {
+        console.log(res);
+        let city = res.result.address_component.city;
+        this.setCity(city);
+      },
+      fail: res => {
+        alert('warn: API wrong!');
+      },
+      complete: res => {
+        this.getNow();
+      }
+    });
+  },
+
+  setCity(city){
+    this.setData({
+      city:city
+    });
+  },
+
   getNow(callback){
     wx.request({
       url: 'https://test-miniprogram.com/api/weather/now',
-      data: { city: '广州市' },
+      data: { city: this.data.city },
       success: res => {
         let result = res.data.result;
         this.setNow(result);
@@ -112,20 +162,4 @@ Page({
       todayTemp:temp
     });
   },
-
-  onTapDayWeather(){
-    wx.navigateTo({
-      url: '/pages/list/list',
-    })
-  },
-
-  onTapLocation(){
-    wx.getLocation({
-      type: '',
-      altitude: true,
-      success: res => {
-        console.log(res);
-      }
-    })
-  }
 });

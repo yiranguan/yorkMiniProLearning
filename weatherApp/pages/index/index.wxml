@@ -2,7 +2,7 @@
   <view class='location-wrapper'>
     <view class='location'>
       <image src='/images/location-icon.png' class='location-icon'></image>
-      <view class='location-text'>广州市</view>
+      <view class='location-text'>{{city}}</view>
     </view>
     <view class='location-tip' bindtap='onTapLocation'>点击获取位置</view>
   </view>
