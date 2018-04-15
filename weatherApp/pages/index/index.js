@@ -117,5 +117,15 @@ Page({
     wx.navigateTo({
       url: '/pages/list/list',
     })
+  },
+
+  onTapLocation(){
+    wx.getLocation({
+      type: '',
+      altitude: true,
+      success: res => {
+        console.log(res);
+      }
+    })
   }
 });
