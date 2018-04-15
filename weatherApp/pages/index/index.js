@@ -31,7 +31,8 @@ Page({
     forecastWeather:[],
     todayDate:'',
     todayTemp:'',
-    city:'广州市'
+    city:'广州市',
+    loactionTipsText:'点击获取当前位置'
   },
 
   onLoad(){
@@ -83,7 +84,8 @@ Page({
 
   setCity(city){
     this.setData({
-      city:city
+      city:city,
+      loactionTipsText:''
     });
   },
 
