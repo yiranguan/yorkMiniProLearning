@@ -11,10 +11,15 @@ const dayMap = {
 Page({
   data:{
     dateItem:[],
+    city:'广州市'
   },
 
-  onLoad(){
+  onLoad(options){
+    this.setData({
+      city:options.city
+    })
     this.getFuture()
+    console.log(options.city)
   },
 
   onPullDownRefresh(){
@@ -27,7 +32,7 @@ Page({
     wx.request({
       url: 'https://test-miniprogram.com/api/weather/future',
       data: {
-        city: '北京市',
+        city: this.data.city,
         time: new Date().getTime()
       },
       success: res => {
