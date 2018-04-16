@@ -56,8 +56,9 @@ Page({
     if (this.data.locationTipsText === '点击开启获取位置权限'){
       wx.openSetting({
         success: res => {
-          res.authSetting = {
-            "scope.userLoaction": true
+          let auth = res.authSetting["scope.userLocation"]
+          if (auth) {
+            this.getLocation()
           }
         }
       })
@@ -74,7 +75,6 @@ Page({
         this.getCity(res.latitude, res.longitude);
       },
       fail: res => {
-        console.log(res);
         this.setLocationTipsText()
       }
     })
