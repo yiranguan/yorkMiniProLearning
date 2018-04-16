@@ -32,10 +32,11 @@ Page({
     todayDate:'',
     todayTemp:'',
     city:'广州市',
-    loactionTipsText:'点击获取当前位置'
+    locationTipsText:''
   },
 
   onLoad(){
+    this.getLocation();
     this.getNow();
   },
 
@@ -52,13 +53,36 @@ Page({
   },
 
   onTapLocation() {
+    if (this.data.locationTipsText === '点击开启获取位置权限'){
+      wx.openSetting({
+        success: res => {
+          let auth = res.authSetting["scope.userLocation"]
+          if (auth) {
+            this.getLocation()
+          }
+        }
+      })
+    } else {
+      this.getLocation()
+    }
+  },
+
+  getLocation() {
     wx.getLocation({
       type: '',
       altitude: true,
       success: res => {
-        console.log(res);
         this.getCity(res.latitude, res.longitude);
+      },
+      fail: res => {
+        this.setLocationTipsText()
       }
+    })
+  },
+
+  setLocationTipsText () {
+    this.setData({
+      locationTipsText: '点击开启获取位置权限'
     })
   },
 
@@ -69,7 +93,6 @@ Page({
         longitude: lon
       },
       success: res => {
-        console.log(res);
         let city = res.result.address_component.city;
         this.setCity(city);
       },
@@ -85,7 +108,7 @@ Page({
   setCity(city){
     this.setData({
       city:city,
-      loactionTipsText:''
+      locationTipsText:''
     });
   },
 

@@ -19,7 +19,6 @@ Page({
       city:options.city
     })
     this.getFuture()
-    console.log(options.city)
   },
 
   onPullDownRefresh(){
