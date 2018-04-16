@@ -32,11 +32,11 @@ Page({
     todayDate:'',
     todayTemp:'',
     city:'广州市',
-    locationTipsText:'点击获取当前位置'
+    locationTipsText:''
   },
 
   onLoad(){
-    wx.getSetting();
+    this.getLocation();
     this.getNow();
   },
 
