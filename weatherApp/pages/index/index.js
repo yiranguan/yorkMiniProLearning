@@ -36,8 +36,22 @@ Page({
   },
 
   onLoad(){
-    wx.getSetting();
     this.getNow();
+  },
+
+  onShow() {
+    wx.getSetting({
+      success: res => {
+        // 位置权限从无到有
+        if(res.authSetting['scope.userLocation'] && this.data.locationTipsText !== ''){
+          this.setData({
+            locationTipsText: '点击获取当前位置'
+          })
+        }
+        // 位置权限从有到无
+        this.getLocation()
+      }
+    });
   },
 
   onPullDownRefresh(){
@@ -54,13 +68,7 @@ Page({
 
   onTapLocation() {
     if (this.data.locationTipsText === '点击开启获取位置权限'){
-      wx.openSetting({
-        success: res => {
-          res.authSetting = {
-            "scope.userLoaction": true
-          }
-        }
-      })
+      wx.openSetting()
     } else {
       this.getLocation()
     }
